@@ -3,4 +3,8 @@
   <groupId>myapp</groupId>
   <artifactId>159251assignment1</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+    <maven.compiler.source>18</maven.compiler.source>
+    <maven.compiler.target>18</maven.compiler.target>
+  </properties>
 </project>
