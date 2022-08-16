@@ -1,1 +1,3 @@
-# 251-Assignment1-2022-Andre-Joel
+Text editor readme
+
+WIP
