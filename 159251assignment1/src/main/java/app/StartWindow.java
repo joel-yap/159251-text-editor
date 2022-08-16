@@ -12,6 +12,7 @@ public class StartWindow {
 	private JMenu fileMenu;
 	private JMenuItem newItem;
 	private JEditorPane editorPane;
+	private JScrollPane scrPane;
 
 	public StartWindow() {
 // Frame
@@ -24,13 +25,13 @@ public class StartWindow {
 		frame.setJMenuBar(mainMenuBar);
 
 // Menu bar item: File
-		fileMenu = new JMenu("File Menu");
+		fileMenu = new JMenu("File");
 		mainMenuBar.add(fileMenu);
 
 // File menu item: New File
 		newItem = new JMenuItem(new AbstractAction("New") {
 			public void actionPerformed(ActionEvent e) {
-				int result = JOptionPane.showConfirmDialog(frame, "Save changes?\n"+ "Unsaved changes will be lost.");
+				int result = JOptionPane.showConfirmDialog(frame, "<html><b>Save changes?</b></html>\n"+ "Unsaved changes will be lost.");
 				switch(result) {
 					case JOptionPane.YES_OPTION:
 						// Save changes
@@ -43,16 +44,14 @@ public class StartWindow {
 				}
 			}
 		});
-
 		fileMenu.add(newItem);
 
 // Initialize Editor pane
 		editorPane = new JEditorPane();
-		editorPane.setBounds(frame.getBounds());
-		frame.add(editorPane, BorderLayout.CENTER);
+		scrPane = new JScrollPane(editorPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS );
 
 // Show all elements
-		frame.setContentPane(editorPane);
+		frame.setContentPane(scrPane);
 		frame.setVisible(true);
 
 	}
