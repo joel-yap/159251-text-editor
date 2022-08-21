@@ -1,19 +1,24 @@
 package app;
 
+import javax.print.*;
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
+import javax.print.attribute.standard.Copies;
+import javax.print.event.PrintJobAdapter;
+import javax.print.event.PrintJobEvent;
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
+import javax.swing.text.html.HTML;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
+import java.io.*;
 import java.net.MalformedURLException;
 
+import static javax.print.ServiceUI.printDialog;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class StartWindow {
@@ -23,6 +28,7 @@ public class StartWindow {
 	private JMenu searchMenu;
 	private JMenuItem newItem;
 	private JMenuItem saveItem;
+	private JMenuItem printItem;
 	private JEditorPane editorPane;
 	private JMenuItem openItem;
 	private JFileChooser chooser;
@@ -111,6 +117,20 @@ public class StartWindow {
 		});
 		fileMenu.add(saveItem);
 
+// Create main menu item: File > Print
+		printItem = new JMenuItem("Print");
+		printItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					printFile();
+				} catch (PrinterException | PrintException pe) {
+				JOptionPane.showMessageDialog(null, pe.getMessage());
+				return;
+				}
+			}
+		});
+		fileMenu.add(printItem);
+
 // Create editor pane
 		editorPane = new JEditorPane();
 		scrPane = new JScrollPane(editorPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS );
@@ -186,4 +206,14 @@ public class StartWindow {
 		editorPane.select(i, (i + searchTerm.length()));
 	}
 
+	void printFile() throws PrinterException, PrintException {
+		PrinterJob pj = PrinterJob.getPrinterJob();
+		pj.setPrintable(editorPane.getPrintable(null, null));
+		boolean doPrint = pj.printDialog();
+		if (doPrint) {
+			pj.print();
+		}
+	}
+
 }
+
