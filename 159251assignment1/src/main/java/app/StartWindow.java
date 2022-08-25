@@ -20,6 +20,7 @@ public class StartWindow {
 	private JMenu fileMenu;
 	private JMenuItem newItem;
 	private JMenuItem saveItem;
+	private JMenuItem exitItem;
 	private JEditorPane editorPane;
 	private JMenuItem openItem;
 	private JFileChooser chooser;
@@ -134,6 +135,32 @@ public class StartWindow {
 			}
 		});
 		fileMenu.add(saveItem);
+		
+//File menu item: Exit
+		exitItem = new JMenuItem("Exit");
+		fileMenu.add(exitItem);
+		exitItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (editorPane.getText() == "") {
+					System.exit(0);
+				} else {
+					//use alert save dialog to trigger save or exit anyway, convert the saveitem actionlistener to a single method that can be called from anywhere
+					System.out.println("You have unsaved changes");
+					int result = JOptionPane.showConfirmDialog(frame, "<html><b>Save changes?</b></html>\n"+ "Unsaved changes will be lost.");
+					switch(result) {
+						case JOptionPane.YES_OPTION:
+							// Save changes
+							break;
+						case JOptionPane.NO_OPTION:
+							editorPane.setText("");
+							break;
+						case JOptionPane.CANCEL_OPTION:
+							break;
+					}
+					
+				}
+			}
+		});
 	}
 
 
