@@ -17,6 +17,12 @@ import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.io.*;
 import java.net.MalformedURLException;
+import org.apache.tika.exception.TikaException;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.parser.ParseContext;
+import org.apache.tika.parser.odf.OpenDocumentParser;
+import org.apache.tika.sax.BodyContentHandler;
+import org.xml.sax.SAXException;
 
 import static javax.print.ServiceUI.printDialog;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
@@ -199,20 +205,44 @@ public class StartWindow {
 		dialogValue = chooser.showOpenDialog(container);
 		if (dialogValue == JFileChooser.APPROVE_OPTION) {
 			String filePath = chooser.getSelectedFile().getPath();
-			try {
-				FileInputStream fr = new FileInputStream(filePath);
-				InputStreamReader isr = new InputStreamReader(fr, "UTF-8");
-				BufferedReader reader = new BufferedReader(isr);
-				StringBuffer buffer = new StringBuffer();
-				String line = null;
-				while ((line = reader.readLine()) != null) {
-					buffer.append(line);
-					buffer.append("\n");
+			//if filePath contains .odt run another method
+			if (filePath.contains(".odt")) {
+				System.out.println("ODT file detected");
+				try {
+					BodyContentHandler handler
+	                = new BodyContentHandler();
+	 
+					Metadata metadata = new Metadata();
+					//parse the odt file
+					FileInputStream fis2 = new FileInputStream(new File(filePath));
+					ParseContext parsecontent = new ParseContext();
+					OpenDocumentParser opendocumentparser = new OpenDocumentParser();
+					//passing InputStream, ContentHandler, Metadata and ParseContext to parse method
+					opendocumentparser.parse(fis2, handler, metadata, parsecontent);
+					System.out.println("Content in the document :\n"
+                            + handler.toString());
+					editorPane.setText(handler.toString());
+				} catch (Exception e4) {
+					System.out.println("Failed to extract content: " + e4);
+					e4.printStackTrace();
 				}
-				reader.close();
-				editorPane.setText(buffer.toString());
-			} catch (IOException e2) {
-				e2.printStackTrace();
+				
+			} else {
+				try {
+					FileInputStream fr = new FileInputStream(filePath);
+					InputStreamReader isr = new InputStreamReader(fr, "UTF-8");
+					BufferedReader reader = new BufferedReader(isr);
+					StringBuffer buffer = new StringBuffer();
+					String line = null;
+					while ((line = reader.readLine()) != null) {
+						buffer.append(line);
+						buffer.append("\n");
+					}
+					reader.close();
+					editorPane.setText(buffer.toString());
+				} catch (IOException e2) {
+					e2.printStackTrace();
+				}	
 			}
 		}
 	}
