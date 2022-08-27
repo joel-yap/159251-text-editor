@@ -222,7 +222,26 @@ public class StartWindow {
 							break;
 					}
 
+<<<<<<< HEAD
 				}
+=======
+// Create editor pane
+		editorPane = new JEditorPane();
+		scrPane = new JScrollPane(editorPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS );
+
+// Create main menu item: View
+		viewMenu = new JMenu("View");
+		mainMenuBar.add(viewMenu);
+		zoomItem = new JMenuItem("Zoom");
+		viewMenu.add(zoomItem);
+		//change editor pane to display date and time
+		timeAndDate = new JMenuItem("Display Time and Date");
+		viewMenu.add(timeAndDate);
+		timeAndDate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LocalDateTime date1 = LocalDateTime.now();
+				editorPane.setText(date1.toString());
+>>>>>>> master
 			}
 		});
 				
@@ -264,6 +283,7 @@ public class StartWindow {
 		if (dialogValue == JFileChooser.APPROVE_OPTION) {
 			String filePath = chooser.getSelectedFile().getPath();
 			//if filePath contains .odt run another method
+			//the read odt function produces console alerts due to slf4j and tika dependencies but the code runs correctly
 			if (filePath.contains(".odt")) {
 				System.out.println("ODT file detected");
 				try {
@@ -277,7 +297,7 @@ public class StartWindow {
 					OpenDocumentParser opendocumentparser = new OpenDocumentParser();
 					//passing InputStream, ContentHandler, Metadata and ParseContext to parse method
 					opendocumentparser.parse(fis2, handler, metadata, parsecontent);
-					System.out.println("Content in the document :\n"
+					System.out.println("Content in the document:\n"
                             + handler.toString());
 					editorPane.setText(handler.toString());
 				} catch (Exception e4) {
