@@ -17,11 +17,14 @@ import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.io.*;
 import java.net.MalformedURLException;
+import java.time.LocalDateTime;
+
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.odf.OpenDocumentParser;
 import org.apache.tika.sax.BodyContentHandler;
+import org.joda.time.LocalDate;
 import org.xml.sax.SAXException;
 
 import static javax.print.ServiceUI.printDialog;
@@ -31,11 +34,16 @@ public class StartWindow {
 	private JFrame frame;
 	private JMenuBar mainMenuBar;
 	private JMenu fileMenu;
+	private JMenu viewMenu;
 	private JMenu searchMenu;
+	private JMenu manageMenu;
+	private JMenu helpMenu;
 	private JMenuItem newItem;
 	private JMenuItem saveItem;
 	private JMenuItem exitItem;
 	private JMenuItem printItem;
+	private JMenuItem zoomItem;
+	private JMenuItem timeAndDate;
 	private JEditorPane editorPane;
 	private JMenuItem openItem;
 	private JFileChooser chooser;
@@ -169,9 +177,31 @@ public class StartWindow {
 		editorPane = new JEditorPane();
 		scrPane = new JScrollPane(editorPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS );
 
+// Create main menu item: View
+		viewMenu = new JMenu("View");
+		mainMenuBar.add(viewMenu);
+		zoomItem = new JMenuItem("Zoom");
+		viewMenu.add(zoomItem);
+		timeAndDate = new JMenuItem("Display Time and Date");
+		viewMenu.add(timeAndDate);
+		timeAndDate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LocalDateTime date1 = LocalDateTime.now();
+				editorPane.setText(date1.toString());
+			}
+		});
+		
+// Create main menu items: Manage and Help
+		manageMenu = new JMenu("Manage");
+		mainMenuBar.add(manageMenu);
+		helpMenu = new JMenu("Help");
+		mainMenuBar.add(helpMenu);
+				
 // Show all main elements
 		frame.setContentPane(scrPane);
 		frame.setVisible(true);
+		
+
 	}
 
 	void saveFile() {
