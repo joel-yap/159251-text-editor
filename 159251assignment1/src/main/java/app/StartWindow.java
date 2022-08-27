@@ -149,12 +149,13 @@ public class StartWindow {
 		mainMenuBar.add(viewMenu);
 		zoomItem = new JMenuItem("Zoom");
 		viewMenu.add(zoomItem);
+		//change editor pane to display date and time
 		timeAndDate = new JMenuItem("Display Time and Date");
 		viewMenu.add(timeAndDate);
 		timeAndDate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LocalDateTime date1 = LocalDateTime.now();
-				editorPane.setText(date1.toString());
+				editorPane.setText(editorPane.getText()+date1.toString());
 			}
 		});
 		
@@ -228,20 +229,6 @@ public class StartWindow {
 		editorPane = new JEditorPane();
 		scrPane = new JScrollPane(editorPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
-// Create main menu item: View
-		viewMenu = new JMenu("View");
-		mainMenuBar.add(viewMenu);
-		zoomItem = new JMenuItem("Zoom");
-		viewMenu.add(zoomItem);
-		//change editor pane to display date and time
-		timeAndDate = new JMenuItem("Display Time and Date");
-		viewMenu.add(timeAndDate);
-		timeAndDate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				LocalDateTime date1 = LocalDateTime.now();
-				editorPane.setText(date1.toString());
-			}
-		});
 
 // Show all main elements
 		frame.setContentPane(scrPane);
