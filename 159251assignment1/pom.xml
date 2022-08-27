@@ -20,8 +20,6 @@
     	<artifactId>pdfbox</artifactId>
     	<version>3.0.0-RC1</version>
 	</dependency>
-
-
 	<!-- https://mvnrepository.com/artifact/org.apache.tika/tika-parsers -->
 	<dependency>
     	<groupId>org.apache.tika</groupId>
@@ -34,9 +32,24 @@
     	<artifactId>slf4j-api</artifactId>
     	<version>2.0.0-alpha0</version>
 	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop -->
-
-	
-
-  </dependencies>
+	<!-- https://maven.apache.org/plugins/maven-pmd-plugin/dependency-info.html-->
+	<dependency>
+  		<groupId>org.apache.maven.plugins</groupId>
+  		<artifactId>maven-pmd-plugin</artifactId>
+  		<version>3.18.0</version>
+  		<type>maven-plugin</type>
+	</dependency>
+	<dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.4.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+  	</dependencies>
 </project>
