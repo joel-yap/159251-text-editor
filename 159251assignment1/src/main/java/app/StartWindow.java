@@ -203,31 +203,30 @@ public class StartWindow {
 		exitItem = new JMenuItem("Exit");
 		fileMenu.add(exitItem);
 		exitItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (editorPane.getText() == "") {
-					System.exit(0);
-				} else {
-					//use alert save dialog to trigger save or exit anyway, convert the saveitem actionlistener to a single method that can be called from anywhere
-					System.out.println("You have unsaved changes");
-					int result = JOptionPane.showConfirmDialog(frame, "<html><b>Save changes?</b></html>\n"+ "Unsaved changes will be lost.");
-					switch(result) {
-						case JOptionPane.YES_OPTION:
-							saveFile();
-							System.exit(0);
-							break;
-						case JOptionPane.NO_OPTION:
-							System.exit(0);
-							break;
-						case JOptionPane.CANCEL_OPTION:
-							break;
-					}
-
-<<<<<<< HEAD
-				}
-=======
+		   public void actionPerformed(ActionEvent e) {
+			   if (editorPane.getText() == "") {
+				   System.exit(0);
+			   } else {
+				   //use alert save dialog to trigger save or exit anyway, convert the saveitem actionlistener to a single method that can be called from anywhere
+				   System.out.println("You have unsaved changes");
+				   int result = JOptionPane.showConfirmDialog(frame, "<html><b>Save changes?</b></html>\n" + "Unsaved changes will be lost.");
+				   switch (result) {
+					   case JOptionPane.YES_OPTION:
+						   saveFile();
+						   System.exit(0);
+						   break;
+					   case JOptionPane.NO_OPTION:
+						   System.exit(0);
+						   break;
+					   case JOptionPane.CANCEL_OPTION:
+						   break;
+				   }
+			   }
+		   }
+	   });
 // Create editor pane
 		editorPane = new JEditorPane();
-		scrPane = new JScrollPane(editorPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS );
+		scrPane = new JScrollPane(editorPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
 // Create main menu item: View
 		viewMenu = new JMenu("View");
@@ -241,10 +240,9 @@ public class StartWindow {
 			public void actionPerformed(ActionEvent e) {
 				LocalDateTime date1 = LocalDateTime.now();
 				editorPane.setText(date1.toString());
->>>>>>> master
 			}
 		});
-				
+
 // Show all main elements
 		frame.setContentPane(scrPane);
 		frame.setVisible(true);
@@ -287,9 +285,7 @@ public class StartWindow {
 			if (filePath.contains(".odt")) {
 				System.out.println("ODT file detected");
 				try {
-					BodyContentHandler handler
-	                = new BodyContentHandler();
-	 
+					BodyContentHandler handler = new BodyContentHandler();
 					Metadata metadata = new Metadata();
 					//parse the odt file
 					FileInputStream fis2 = new FileInputStream(new File(filePath));
@@ -298,13 +294,13 @@ public class StartWindow {
 					//passing InputStream, ContentHandler, Metadata and ParseContext to parse method
 					opendocumentparser.parse(fis2, handler, metadata, parsecontent);
 					System.out.println("Content in the document:\n"
-                            + handler.toString());
+							+ handler.toString());
 					editorPane.setText(handler.toString());
 				} catch (Exception e4) {
 					System.out.println("Failed to extract content: " + e4);
 					e4.printStackTrace();
 				}
-				
+
 			} else {
 				try {
 					FileInputStream fr = new FileInputStream(filePath);
@@ -320,7 +316,7 @@ public class StartWindow {
 					editorPane.setText(buffer.toString());
 				} catch (IOException e2) {
 					e2.printStackTrace();
-				}	
+				}
 			}
 		}
 	}
@@ -350,6 +346,5 @@ public class StartWindow {
 			pj.print();
 		}
 	}
-
 }
 
