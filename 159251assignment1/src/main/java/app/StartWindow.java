@@ -131,6 +131,20 @@ public class StartWindow {
 			}
 		});
 		fileMenu.add(saveItem);
+
+// Create main menu item: File > Print
+		printItem = new JMenuItem("Print");
+		printItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					printFile();
+				} catch (PrinterException | PrintException pe) {
+					JOptionPane.showMessageDialog(null, pe.getMessage());
+					return;
+				}
+			}
+		});
+		fileMenu.add(printItem);
 		
 //File menu item: Exit
 		exitItem = new JMenuItem("Exit");
@@ -158,20 +172,6 @@ public class StartWindow {
 				}
 			}
 		});
-
-// Create main menu item: File > Print
-		printItem = new JMenuItem("Print");
-		printItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					printFile();
-				} catch (PrinterException | PrintException pe) {
-				JOptionPane.showMessageDialog(null, pe.getMessage());
-				return;
-				}
-			}
-		});
-		fileMenu.add(printItem);
 
 // Create editor pane
 		editorPane = new JEditorPane();
