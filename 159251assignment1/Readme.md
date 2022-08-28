@@ -13,7 +13,7 @@ Exit closes the current frame.
 
 Search opens a dialog window that allows the user to enter a case-sensitive word and jump to the matching word in the editor pane.\
 View has a Display Date And Time function which adds the current date and time to the top of the existing text.\
-Help has an About function that shows basic information about the Text Editor.\
+Help has an About function that shows basic information about the Text Editor.
 
 Significant Git commits:\
 Joel:\
