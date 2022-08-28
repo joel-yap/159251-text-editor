@@ -2,30 +2,27 @@ package app;
 
 import javax.print.*;
 import javax.swing.*;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.io.*;
-import java.net.MalformedURLException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfWriter;
-import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.odf.OpenDocumentParser;
 import org.apache.tika.sax.BodyContentHandler;
-import org.joda.time.LocalDate;
-import org.xml.sax.SAXException;
 
-import static javax.print.ServiceUI.printDialog;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class StartWindow {
@@ -45,6 +42,7 @@ public class StartWindow {
 	private JMenuItem aboutItem;
 	private JMenuItem convertToPDF;
 	private JMenuItem searchCaseSensitive;
+	private JMenuItem getSourceItem;
 	private JEditorPane editorPane;
 	private JMenuItem openItem;
 	private JFileChooser chooser;
@@ -173,7 +171,24 @@ public class StartWindow {
 		});
 		helpMenu.add(aboutItem);
 
-// Create main menu items: Manage > Convert to PDF
+		getSourceItem = new JMenuItem("Read Source Code");
+		getSourceItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame frame = new JFrame();
+				frame.setAlwaysOnTop(true);
+
+				Object[] options = {"java", "python", "cpp"};
+				Object selectionObject = JOptionPane.showInputDialog(frame, "Select language", "Style", JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+				String selectionString = selectionObject.toString();
+				//editorPane.setContentType("text/html");
+				String data = new ConvertToStyle(false, "colorful", selectionString).hilite(editorPane.getText());
+				editorPane.setContentType("text/html");
+				editorPane.setText(data);
+			}
+		});
+		manageMenu.add(getSourceItem);
+
+// Create main menu items: File > Convert to PDF
 		convertToPDF = new JMenuItem("Convert to PDF");
 		convertToPDF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -236,7 +251,6 @@ public class StartWindow {
 // Create editor pane
 		editorPane = new JEditorPane();
 		scrPane = new JScrollPane(editorPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-
 
 // Show all main elements
 		frame.setContentPane(scrPane);
@@ -339,6 +353,79 @@ public class StartWindow {
 		boolean doPrint = pj.printDialog();
 		if (doPrint) {
 			pj.print();
+		}
+	}
+
+	/* Parse text to code */
+	public static class ConvertToStyle {
+		private static final String URL = "http://hilite.me/api";
+		private static final String NEWLINE = System.lineSeparator();
+		private static final String ENCODING = StandardCharsets.UTF_8.name();
+
+		private final String parameters;
+
+		/** Constructor activating line number generation. */
+		public ConvertToStyle() {
+			this(true);
+		}
+
+		/** Constructor setting rendering style to "monokai". */
+		public ConvertToStyle(boolean lineNumbers) {
+			this(lineNumbers, "monokai");
+		}
+
+		/** Constructor setting lexer to "java", see http://pygments.org/docs/styles/. */
+		public ConvertToStyle(boolean lineNumbers, String style) {
+			this(lineNumbers, style, "java");
+		}
+
+		/** Constructor preparing all given parameters as URL parameters. */
+		public ConvertToStyle(boolean lineNumbers, String style, String lexer) {
+			this.parameters =
+					"lexer="+lexer+"&"+
+							"style="+style+"&"+
+							(lineNumbers ? "linenos=1&" : "");
+			// good styles are: "monokai", "borland", "emacs", "default", "manni", "trac" "vs"
+		}
+
+		/**
+		 * Call the highlighting website with given source code and
+		 * return the highlighted HTML representation.
+		 * Mind that no line-formatting is done, so the given javaSourceCode
+		 * should contain newlines and be indented correctly!
+		 * @param sourceCode the text to highlight as HTML.
+		 * @return the highlighted HTML representing given source.
+		 */
+		public String hilite(String SourceCode)    {
+			try    {
+				final java.net.URL url = new URL(URL);
+
+				final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+				connection.setRequestProperty("Accept-Charset", ENCODING);
+				connection.setDoOutput(true); // triggers POST
+				// big javaSourceCode works with POST only!
+				try (final OutputStream output = connection.getOutputStream()) {
+					String parameters = this.parameters+"code="+ URLEncoder.encode(SourceCode, ENCODING);
+					output.write(parameters.getBytes(ENCODING));
+				}
+
+				final int responseCode = connection.getResponseCode();
+				if (responseCode != 200)
+					throw new IllegalStateException("Response code was: "+responseCode);
+
+				try (final BufferedReader inputReader =
+							 new BufferedReader(new InputStreamReader(connection.getInputStream(), ENCODING))) {
+					final StringBuilder response = new StringBuilder();
+					for (String line; (line = inputReader.readLine()) != null; ) {
+						response.append(line);
+						response.append(NEWLINE);
+					}
+					return response.toString();
+				}
+			}
+			catch (Exception e)    {
+				throw new RuntimeException(e);
+			}
 		}
 	}
 }

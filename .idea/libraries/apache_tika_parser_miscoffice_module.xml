@@ -1,0 +1,35 @@
+<component name="libraryTable">
+  <library name="apache.tika.parser.miscoffice.module" type="repository">
+    <properties maven-id="org.apache.tika:tika-parser-miscoffice-module:2.4.1" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tika/tika-parser-miscoffice-module/2.4.1/tika-parser-miscoffice-module-2.4.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tika/tika-parser-zip-commons/2.4.1/tika-parser-zip-commons-2.4.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-compress/1.21/commons-compress-1.21.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tika/tika-parser-text-module/2.4.1/tika-parser-text-module-2.4.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/googlecode/juniversalchardet/juniversalchardet/1.0.3/juniversalchardet-1.0.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-csv/1.9.0/commons-csv-1.9.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tika/tika-parser-xml-module/2.4.1/tika-parser-xml-module-2.4.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/xerces/xercesImpl/2.12.2/xercesImpl-2.12.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi/5.2.2/poi-5.2.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/logging/log4j/log4j-api/2.17.2/log4j-api-2.17.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.15/commons-codec-1.15.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/glassfish/jaxb/jaxb-runtime/2.3.6/jaxb-runtime-2.3.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/jakarta/xml/bind/jakarta.xml.bind-api/2.3.3/jakarta.xml.bind-api-2.3.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/glassfish/jaxb/txw2/2.3.6/txw2-2.3.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/sun/istack/istack-commons-runtime/3.0.12/istack-commons-runtime-3.0.12.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/sun/activation/jakarta.activation/1.2.2/jakarta.activation-1.2.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tika/tika-parser-xmp-commons/2.4.1/tika-parser-xmp-commons-2.4.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/pdfbox/jempbox/1.8.16/jempbox-1.8.16.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/pdfbox/xmpbox/2.0.26/xmpbox-2.0.26.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.2/commons-logging-1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
