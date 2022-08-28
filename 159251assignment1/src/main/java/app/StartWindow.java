@@ -155,7 +155,7 @@ public class StartWindow {
 		timeAndDate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LocalDateTime date1 = LocalDateTime.now();
-				editorPane.setText(editorPane.getText()+date1.toString());
+				editorPane.setText(date1.toString()+"\n"+editorPane.getText());
 			}
 		});
 		
