@@ -1,5 +1,5 @@
 # Text Editor
-## By Andre Vrey and Joel Yap
+## By Andre Vrey and Joel Yap (21007112)
 
 The program has five main tabs, File, Search and View are functional. 
 
