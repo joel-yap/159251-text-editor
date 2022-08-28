@@ -13,6 +13,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Map;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -22,6 +24,7 @@ import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.odf.OpenDocumentParser;
 import org.apache.tika.sax.BodyContentHandler;
+import org.yaml.snakeyaml.Yaml;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
@@ -56,7 +59,19 @@ public class StartWindow {
 // Create main window
 		frame = new JFrame("Text Editor");
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		frame.setBounds(200,170,500,500);
+		Yaml yaml = new Yaml();
+		FileInputStream inputStream;
+		try {
+			inputStream = new FileInputStream("config1.yml");
+			Map<String, Object> obj = yaml.load(inputStream);
+			System.out.println(obj);
+			ArrayList<Integer> frameBounds = (ArrayList<Integer>) obj.get("size");
+			System.out.println(frameBounds);
+			frame.setBounds((frameBounds.get(0)), (frameBounds.get(1)), (frameBounds.get(2)), (frameBounds.get(3)));
+		} catch (FileNotFoundException e1) {
+			System.err.println("Error in opening file");
+			e1.printStackTrace();
+		}
 
 // Create main menu
 		mainMenuBar = new JMenuBar();
