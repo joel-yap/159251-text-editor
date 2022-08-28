@@ -1,17 +1,23 @@
 Code Size (class): 
   Lines Of Code
-    StartWindow.java: 254
+    StartWindow.java: 363
     Main.java: 6
+    Editor.java: 5
   Number Of Methods
-    StartWindow.java: 5
+    StartWindow.java: 10
+    Editor.java: 1
     Main.java: 0
 Code Complexity:
   Cyclomatic Complexity
-    StartWindow: Mean of 3.8
+    StartWindow: Mean of 4
       loadFile: 6
       saveFile: 5
       searchFile: 5
+      StartWindow: 2
       printFile: 2
+    ConvertToStyle: Mean of 1.6
+      hilite: 4
+      ConvertToStyle: 1
     Main: 1
   Efferent Coupling: 
     app: 2

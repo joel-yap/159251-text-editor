@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.48.0" timestamp="2022-08-28T22:51:02.374">
+<file name="D:\Programming Software\Eclipse_Workspace_Java\159251assignment1\src\main\java\app\Main.java">
+<violation beginline="6" endline="6" begincolumn="7" endcolumn="21" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="app" class="Main" method="main" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'app.StartWindow' due to existing same package import 'app.*'
+</violation>
+</file>
+<file name="D:\Programming Software\Eclipse_Workspace_Java\159251assignment1\src\main\java\app\StartWindow.java">
+<violation beginline="55" endline="55" begincolumn="17" endcolumn="24" rule="UnusedPrivateField" ruleset="Best Practices" package="app" class="StartWindow" variable="filename" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_bestpractices.html#unusedprivatefield" priority="3">
+Avoid unused private fields such as 'filename'.
+</violation>
+<violation beginline="70" endline="70" begincolumn="21" endcolumn="38" rule="UselessParentheses" ruleset="Code Style" package="app" class="StartWindow" method="StartWindow" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="70" endline="70" begincolumn="43" endcolumn="60" rule="UselessParentheses" ruleset="Code Style" package="app" class="StartWindow" method="StartWindow" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="70" endline="70" begincolumn="65" endcolumn="82" rule="UselessParentheses" ruleset="Code Style" package="app" class="StartWindow" method="StartWindow" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="70" endline="70" begincolumn="87" endcolumn="104" rule="UselessParentheses" ruleset="Code Style" package="app" class="StartWindow" method="StartWindow" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="362" endline="362" begincolumn="25" endcolumn="47" rule="UselessParentheses" ruleset="Code Style" package="app" class="StartWindow" method="searchFile" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="416" endline="416" begincolumn="11" endcolumn="22" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="app" class="StartWindow$ConvertToStyle" method="hilite" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'java.net.URL' due to existing import 'java.net.URL'
+</violation>
+<violation beginline="422" endline="422" begincolumn="10" endcolumn="65" rule="UnnecessaryModifier" ruleset="Code Style" package="app" class="StartWindow$ConvertToStyle" method="hilite" variable="output" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on resource specification 'output': resource specifications are implicitly final
+</violation>
+<violation beginline="431" endline="432" begincolumn="10" endcolumn="88" rule="UnnecessaryModifier" ruleset="Code Style" package="app" class="StartWindow$ConvertToStyle" method="hilite" variable="inputReader" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on resource specification 'inputReader': resource specifications are implicitly final
+</violation>
+</file>
+</pmd>
