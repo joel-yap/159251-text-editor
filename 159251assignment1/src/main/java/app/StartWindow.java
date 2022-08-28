@@ -42,6 +42,7 @@ public class StartWindow {
 	private JMenuItem printItem;
 	private JMenuItem zoomItem;
 	private JMenuItem timeAndDate;
+	private JMenuItem aboutItem;
 	private JMenuItem convertToPDF;
 	private JMenuItem searchCaseSensitive;
 	private JEditorPane editorPane;
@@ -164,6 +165,13 @@ public class StartWindow {
 		mainMenuBar.add(manageMenu);
 		helpMenu = new JMenu("Help");
 		mainMenuBar.add(helpMenu);
+		aboutItem = new JMenuItem("About");
+		aboutItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frame, "Text Editor\nBy Andre Vrey and Joel Yap\nVersion 1.0", "About", JOptionPane.PLAIN_MESSAGE);
+			}
+		});
+		helpMenu.add(aboutItem);
 
 // Create main menu items: Manage > Convert to PDF
 		convertToPDF = new JMenuItem("Convert to PDF");
