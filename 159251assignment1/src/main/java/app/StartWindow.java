@@ -64,9 +64,9 @@ public class StartWindow {
 		try {
 			inputStream = new FileInputStream("config1.yml");
 			Map<String, Object> obj = yaml.load(inputStream);
-			System.out.println(obj);
+			//System.out.println(obj);
 			ArrayList<Integer> frameBounds = (ArrayList<Integer>) obj.get("size");
-			System.out.println(frameBounds);
+			//System.out.println(frameBounds);
 			frame.setBounds((frameBounds.get(0)), (frameBounds.get(1)), (frameBounds.get(2)), (frameBounds.get(3)));
 		} catch (FileNotFoundException e1) {
 			System.err.println("Error in opening file");
