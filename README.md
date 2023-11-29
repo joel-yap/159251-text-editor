@@ -1,6 +1,6 @@
 # Text Editor
   
-## By Andre Vrey (21009282) and Joel Yap (21007112)
+## By Andre Vrey and Joel Yap
   
 ### Requirements  
   
