@@ -59,10 +59,11 @@ public class StartWindow {
 // Create main window
 		frame = new JFrame("Text Editor");
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		File yamlFile = new File("config1.yml");
 		Yaml yaml = new Yaml();
 		FileInputStream inputStream;
 		try {
-			inputStream = new FileInputStream("config1.yml");
+			inputStream = new FileInputStream(yamlFile);
 			Map<String, Object> obj = yaml.load(inputStream);
 			//System.out.println(obj);
 			ArrayList<Integer> frameBounds = (ArrayList<Integer>) obj.get("size");
