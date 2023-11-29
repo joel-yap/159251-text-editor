@@ -7,17 +7,6 @@
 - JRE https://www.java.com/en/download/manual.jsp
 - Internet connection (for 'Read Source Code' function)
 
-### Installation  
-  
-Repository: https://github.com/159251/251-Assignment1-2022-Andre-Joel  
-  
-<b>Clone</b>  
-HTTPS: https://github.com/159251/251-Assignment1-2022-Andre-Joel.git  
-SSH: git@github.com:159251/251-Assignment1-2022-Andre-Joel.git  
-
-<b>Run/Executable</b>  
-The executable can be found in the top level directory i.e. 251-Assignment1-2022-Andre-Joel/TextEditor.jar
-  
 ------
   
 ### Description  
