@@ -8,7 +8,7 @@
 - Internet connection (for 'Read Source Code' function)
 
 ### Installation
-The project can be cloned from the GitHub repository. Using the IntelliJ IDE, go to the Main class declaration in src/main/java/app, right-click on Main (line 3) and select Modify Run Configuration, then save the build configuration, build and run the application.
+The project can be cloned from the GitHub repository. Using the IntelliJ IDE, go to the Main class declaration in 159251assignment1/src/main/java/app, right-click on Main (line 3) and select Modify Run Configuration, then save the build configuration, build and run the application.
 
 ------
   
